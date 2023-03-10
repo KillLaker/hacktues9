@@ -1,6 +1,7 @@
 #include <SoftwareSerial.h>
 #include <PN532_SWHSU.h>
 #include <PN532.h>
+
 SoftwareSerial SWSerial( 3, 2 ); // RX, TX
  
 PN532_SWHSU pn532swhsu( SWSerial );
@@ -44,12 +45,12 @@ void loop()
 void readNFC()
 {
   boolean success;
-  uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };  // Buffer to store the returned UID
+  uint8_t uid[16] = { 0, 0, 0, 0, 0, 0, 0 };  // Buffer to store the returned UID
   uint8_t uidLength;                       // Length of the UID (4 or 7 bytes depending on ISO14443A card type)
   success = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A, &uid[0], &uidLength);
   if (success)
   {
-    
+    //Serial.print("fvbfbb");
     Serial.print("UID Length: ");
     Serial.print(uidLength, DEC);
     Serial.println(" bytes");
@@ -66,8 +67,9 @@ void readNFC()
     Serial.print(F("tagId is : "));
     Serial.println(tagId);
     Serial.println("");
-    if(tagId == "33.94.155.29")
+    if(tagId == "144.8.60.33")
     {
+      Serial.print(("fvbfbb"));
       digitalWrite(ledPin, HIGH);  // turn the LED on (HIGH is the voltage level)
       delay(3000);                      // wait for a second
       digitalWrite(ledPin, LOW);   // turn the LED off by making the voltage LOW
