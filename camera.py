@@ -1,20 +1,16 @@
 import cv2
 
-# initialize the camera
-cap = cv2.VideoCapture(0)
+def take_picture():
 
-# check if camera is available
-if not cap.isOpened():
-    print("Unable to access camera")
-    exit()
+    cap = cv2.VideoCapture(0)
 
-# read a frame from the camera
-ret, frame = cap.read()
+    if not cap.isOpened():
+        exit()
 
-# if frame is read correctly, save it to a file
-if ret:
-    cv2.imwrite("image.jpg", frame)
+    ret, frame = cap.read()
 
-# release the camera and close the window
-cap.release()
-cv2.destroyAllWindows()
+    if ret:
+        cv2.imwrite("image.jpg", frame)
+
+    cap.release()
+    cv2.destroyAllWindows()
