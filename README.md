@@ -11,6 +11,7 @@
 * Arduino
 * Rapsberry Pi
 * Python
+* C
 ***
 ## Бъдещи насоки:
 * Резервен/авариен достъп в случай на авария (backdoor access)
